@@ -1,6 +1,6 @@
 {
   "name": "react-leap-feature-selector",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "react-leap-feature-selector React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,6 +10,11 @@
     "lib",
     "umd"
   ],
+  "author": {
+    "name": "frantic0",
+    "email": "franxico@gmail.com",
+    "url": "http://frantic0.com"
+  },
   "scripts": {
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
@@ -34,8 +39,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "author": "",
-  "homepage": "",
   "license": "MIT",
   "repository": "",
   "keywords": [
