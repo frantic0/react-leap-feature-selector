@@ -1,1 +1,1 @@
-export {default} from './LeapData';
+export {default} from './LeapFeatureSelector';

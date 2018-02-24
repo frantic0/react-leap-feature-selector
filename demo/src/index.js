@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import LeapData from '../../src/LeapData';
+import LeapFeatureSelector from '../../src/LeapFeatureSelector';
 import LeapProvider from '../../src/LeapProvider';
 import update from 'immutability-helper';
 
@@ -301,7 +301,7 @@ class Demo extends Component {
   render() {
     return (
       <LeapProvider>
-        <LeapData selectedData={state} onSelectedDataChange={handleSelectedDataChange} />
+        <LeapFeatureSelector selectedData={state} onSelectedDataChange={handleSelectedDataChange} />
       </LeapProvider>
     )
   }

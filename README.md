@@ -6,7 +6,7 @@
 
 Experimental React component to enable feature selection from Leap Motion data streams
 
-This component is published with an UMD for vanilla Javascript apps. 
+This component is published with an UMD for vanilla Javascript apps. Project is generated with [nwb](https://github.com/insin/nwb)
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo

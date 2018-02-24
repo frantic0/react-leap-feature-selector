@@ -11,7 +11,7 @@ import {
   Hidden,
   ScreenClassRender
 } from 'react-grid-system';
-import './LeapData.css';
+import './LeapFeatureSelector.css';
 
 function LeapHandData(props) {
   return (
@@ -391,7 +391,7 @@ const CurrentSelectedFrame = (props) =>
 // TODO extract currentFrameRate from here
 
 /** Adaptive component for selecting individual features from Leap data */
-const LeapData = ({ frame, ...passedProps }) => {
+const LeapFeatureSelector = ({ frame, ...passedProps }) => {
 
   const props = omit(passedProps, 'children');
 
@@ -438,13 +438,13 @@ const LeapData = ({ frame, ...passedProps }) => {
   }
 }
 
-LeapData.propTypes = {
+LeapFeatureSelector.propTypes = {
   /**  Leap Motion data frame  */
   frame: PropTypes.object,
   selectedData: PropTypes.object
 }
 
-LeapData.defaultProps = {
+LeapFeatureSelector.defaultProps = {
   /**  Leap Motion data frame  */
   frame: {},
   selectedData: {
@@ -705,5 +705,4 @@ LeapData.defaultProps = {
   }
 }
 
-// export default withLeapContainer(connect(state => state)(LeapData));
-export default withLeapContainer(LeapData);
+export default withLeapContainer(LeapFeatureSelector);

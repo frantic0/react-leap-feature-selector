@@ -40,8 +40,13 @@
     "react-dom": "^16.2.0"
   },
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/frantic0/react-leap-feature-selector",
   "keywords": [
-    "react-component"
+    "react-component",
+    "components",
+    "react",
+    "react-component",
+    "leapjs",
+    "leap-motion"
   ]
 }
