@@ -1,0 +1,64 @@
+div label input {
+
+}
+
+.featureGroupName {
+  width: 100%;
+  text-align: center;
+  color: white;
+
+}
+
+.ck-button {
+    background-color: Transparent;
+    margin:5px;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow: auto;
+    float: left;
+    color: white;
+    width: 35px;
+    font-weight: normal;
+    font-size: 80%;
+}
+
+.ck-button:hover {
+    margin:5px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid red;
+    overflow: auto;
+    float:left;
+    color:red;
+    font-weight: normal;
+}
+
+.ck-button > span {
+  z-index: -2;
+}
+
+.ck-button label {
+    display:block;
+    float:center;
+    width:3.0em;
+    margin: 1px 1em 0 auto;
+}
+
+.ck-button label span {
+    font-weight: normal;
+    text-align:center;
+    padding:0px 0px;
+
+}
+
+
+.ck-button label input {
+    position:absolute;
+}
+
+.ck-button input:checked + span {
+    font-weight: normal;
+    color:#fff;
+    color:red;
+    border:1px solid red;
+}

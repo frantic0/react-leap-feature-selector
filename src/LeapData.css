@@ -1,0 +1,41 @@
+.block {
+    width: 50px;
+    display: inline-block
+  }
+  
+  .currentFrameRate {
+    color:white;
+    margin: 0 0 10px 0;
+  }
+  
+  .currentFrameLabel {
+    color:white;
+  }
+  
+  .currentFrame {
+    color:red;
+    overflow:hidden;
+      display: inline-block;
+  }
+  
+  .row {
+    display: inline-block;
+    align-content: center;
+  }
+  
+  .fingerLabel {
+    color: gray;
+  }
+  
+  .handLabel {
+    color: gray;
+  }
+  
+  .currentFrameContainer {
+    margin-top: 20px;
+    color: white;
+    float: left;
+    text-align: left;
+    display: inline-block;
+  }
+  
