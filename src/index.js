@@ -11,7 +11,7 @@ import {
   Hidden,
   ScreenClassRender
 } from 'react-grid-system';
-import './LeapFeatureSelector.css';
+import './index.css';
 
 function LeapHandData(props) {
   return (
@@ -441,7 +441,8 @@ const LeapFeatureSelector = ({ frame, ...passedProps }) => {
 LeapFeatureSelector.propTypes = {
   /**  Leap Motion data frame  */
   frame: PropTypes.object,
-  selectedData: PropTypes.object
+  selectedData: PropTypes.object,
+  onSelectedDataChange: PropTypes.func
 }
 
 LeapFeatureSelector.defaultProps = {
