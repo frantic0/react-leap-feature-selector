@@ -1,20 +1,6 @@
 import React, {Component} from 'react';
-// import { connect } from 'react-redux';
-// import { selectLeapFeature } from '../../../actions/leapFeature.js'
 import './FeatureSelector.css';
 
-
-// import Button from 'react-bootstrap/lib/Button';
-// import { bootstrapUtils } from 'react-bootstrap/lib/utils';
-// import Toggle from 'react-bootstrap-toggle';
-// import { Bootstrap2Toggle } from 'react-bootstrap-toggle';
-// import "react-bootstrap-toggle/src/bootstrap2-toggle.css";
-// import {Checkbox, Radio} from 'react-btn-checkbox';
-
-// bootstrapUtils.addStyle(Button, 'custom');
-
-// React Checkbox
-// https://codepen.io/anon/pen/KvVPrb
 
 class FeatureSelector extends Component {
 
@@ -27,12 +13,6 @@ class FeatureSelector extends Component {
     this.props.onSelectedDataChange(e);
     // this.props.dispatch(selectLeapFeature(e));
   }
-
-  // <label>
-  //   <input type="checkbox" defaultChecked={this.props.selectedData.x} hidden onClick={() => this.handleClick( this.props.name + "x: " + this.props.x )}/>
-  //   <span id="mySpan1">{this.props.x}</span>
-  // </label>
-
 
   render() {
     return (
@@ -69,5 +49,4 @@ class FeatureSelector extends Component {
   }
 }
 
-// export default connect(state => state)(FeatureSelector);
 export default FeatureSelector;

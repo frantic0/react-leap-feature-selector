@@ -169,7 +169,7 @@ LeapProvider.childContextTypes = {
 }
 
 /**
- * HOC wraps children components [LeapData] to inject Leap frame and pass throu children props
+ * HOC wraps children components [LeapFeatureSelector] to inject Leap frame and pass throu children props
  * [Attribution] 
  */
 export function withLeapContainer(WrappedComponent) {

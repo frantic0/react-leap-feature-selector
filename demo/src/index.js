@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import LeapFeatureSelector from '../../src/LeapFeatureSelector';
-import LeapProvider from '../../src/LeapProvider';
+import LeapFeatureSelector from '../../src/index';
+import LeapProvider from './LeapProvider';
 import update from 'immutability-helper';
+import Leap from 'leapjs';
 
-const state = {
+const selectables = {
   hand1: {
     id: 1,
     direction: {
@@ -261,48 +262,152 @@ const state = {
   }
 }
 
-
-	/** Make deep copy of current state and update it using immutability-helper */
-	function handleSelectedDataChange(name) {
-
-		var newCollection = {};
-		var propValuePair = name.split(':');
-		let cs = propValuePair[0].split('.');
-
-		if (cs[1] === '0') {
-			newCollection = update(state, {
-				['hand' + cs[0]]: {
-					[cs[2]]: {
-						[cs[3]]: {
-							$set: !state['hand' + cs[0]][cs[2]][cs[3]]
-						}
-					}
-				}
-			});
-		} else {
-			newCollection = update(state, {
-				['hand' + cs[0]]: {
-					['finger' + cs[1]]: {
-						[cs[2]]: {
-							[cs[3]]: {
-								$set: !state['hand' + cs[0]]['finger' + cs[1]][cs[2]][cs[3]]
-							}
-						}
-					}
-				}
-			});
-		}
-		return newCollection;
-  }
   
-
 class Demo extends Component {
   
+  constructor(props){
+    super(props);
+    this.state = { 
+      frame: {}, 
+      selectedData: selectables
+    };
+
+    this.handleSelectedDataChange = this.handleSelectedDataChange.bind(this);
+    this.onFrame = this.onFrame.bind(this);
+  }
+
+  componentDidMount() {
+
+    const { options } = this.props;
+
+    this.setupLeap(options);
+
+    this.leapController.connect();
+
+    console.log('LeapProvider - componentDidMount');
+  }
+
+
+  componentWillUnmount() {
+
+    // this.stop();
+
+    // TODO We need to kill the event handler that sets the frame to state.
+
+    // TODO Should we remove child components too?
+    // this.mount.removeChild(this.renderer.domElement);
+    // this.leapController.on('frame', null);
+    this.leapController.disconnect();
+  }
+
+  setupLeap(options){
+    this.leapController = new Leap.Controller(options);
+    // .use('handHold')
+    // .use('transform', { position: new THREE.Vector3(1, 0, 0)})
+    // .use('handEntry')
+    // .use('screenPosition')
+    // .use('boneHand', {
+      // parent: scene,
+      // renderer: renderer,
+      // scale: getParam('scale'),
+      // positionScale: getParam('positionScale'),
+      // offset: new THREE.Vector3(0, 0, 0),
+      // renderFn: function() {
+        // renderer.render(scene, camera);
+        // return controls.update();
+      // },
+      // materialOptions: {
+      //   wireframe: getParam('wireframe')
+      // },
+      // dotsMode: getParam('dots'),
+      // stats: stats,
+      // camera: camera,
+      // boneLabels: function(boneMesh, leapHand) {
+      //   if (boneMesh.name.indexOf('Finger_03') === 0) {
+      //     return leapHand.pinchStrength;
+      //   }
+      // },
+      // boneColors: function(boneMesh, leapHand) {
+      //   if ((boneMesh.name.indexOf('Finger_0') === 0) || (boneMesh.name.indexOf('Finger_1') === 0)) {
+      //     return {
+      //       hue: 0.6,
+      //       saturation: leapHand.pinchStrength
+      //     };
+      //   }
+      // },
+      // checkWebGL: true
+    // });
+
+    this.leapController.on('deviceAttached', function() {
+      console.log('LeapProvider - deviceAttached');
+    });
+    this.leapController.on('deviceStreaming', function() {
+      console.log('LeapProvider - deviceStreaming');
+    });
+    this.leapController.on('deviceStopped', function() {
+      console.log('LeapProvider - deviceStopped');
+    });
+    this.leapController.on('deviceRemoved', function() {
+      console.log('LeapProvider - deviceRemoved');
+    });
+
+    this.leapController.on('deviceRemoved', function() {
+      console.log('LeapProvider - deviceRemoved');
+    });
+
+    this.leapController.on('frame', this.onFrame);
+  }
+
+  onFrame(frame){
+    this.setState({ frame });
+
+  }
+
+  handleSelectedDataChange = (name) => {
+    this.setState(() => this.handleSelectedData(name));
+  }
+
+
+  handleSelectedData(name) {
+
+    var newCollection = {};
+    var propValuePair= name.split(':');
+
+    let cs = propValuePair[0].split('.');
+    if (cs[1] === '0') {
+      newCollection = update(this.state, {
+        selectedData: {
+          ['hand' + cs[0]]: {
+            [cs[2]]: {
+              [cs[3]]: {
+                $set: !this.state.selectedData['hand' + cs[0]][cs[2]][cs[3]]
+              }
+            }
+          }
+        },
+
+      });
+    } else {
+      newCollection = update(this.state, {
+        selectedData: {
+          ['hand' + cs[0]]: {
+            ['finger' + cs[1]]: {
+              [cs[2]]: {
+                [cs[3]]: {
+                  $set: !this.state.selectedData['hand' + cs[0]]['finger' + cs[1]][cs[2]][cs[3]]
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+    this.setState(newCollection);
+  }
+
   render() {
     return (
-      <LeapProvider>
-        <LeapFeatureSelector selectedData={state} onSelectedDataChange={handleSelectedDataChange} />
-      </LeapProvider>
+      <LeapFeatureSelector frame={this.state.frame} selectedData={this.state.selectedData} onSelectedDataChange={this.handleSelectedDataChange} />
     )
   }
 }
