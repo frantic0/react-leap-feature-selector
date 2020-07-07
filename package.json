@@ -13,7 +13,7 @@
   "author": {
     "name": "frantic0",
     "email": "franxico@gmail.com",
-    "url": "http://frantic0.com"
+    "url": "https://frantic0.com"
   },
   "scripts": {
     "build": "nwb build-react-component --copy-files",
