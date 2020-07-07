@@ -407,7 +407,9 @@ class Demo extends Component {
 
   render() {
     return (
-      <LeapFeatureSelector frame={this.state.frame} selectedData={this.state.selectedData} onSelectedDataChange={this.handleSelectedDataChange} />
+      <LeapFeatureSelector frame={this.state.frame} 
+                           selectedData={this.state.selectedData} 
+                           onSelectedDataChange={this.handleSelectedDataChange} />
     )
   }
 }

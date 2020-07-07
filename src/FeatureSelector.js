@@ -39,7 +39,7 @@ class FeatureSelector extends Component {
             <label>
               <input type="checkbox"
                       hidden defaultChecked={this.props.selectedData.z}
-                      onClick={() => this.handleClick( this.props.name + "z: " + this.props.z )}/>
+                      onClick={ () => this.handleClick( this.props.name + "z: " + this.props.z )}/>
               <span id="mySpan3">{this.props.z}</span>
             </label>
           </div>

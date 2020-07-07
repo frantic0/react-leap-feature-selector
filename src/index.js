@@ -379,11 +379,11 @@ const CurrentSelectedFrame = (props) =>
 
   return (
     <div className='currentFrameContainer'>
-      <div> Current Frame [ </div>
-      <div className='currentFrame'>
+      <div> Current Frame [
+      <span className='currentFrame'>
         {listOfSelectedFrameValues.map((feature, i) => { return <span key={i}>{ format(feature)}, </span>} )}
-      </div>
-      <div> ] </div>
+      </span>
+      ] </div>
     </div>
   );
 }
